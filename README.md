@@ -20,6 +20,7 @@ Created this project in a group with 4 people including myself
 * Used location as a functionality for other users to be able to find the street art
 * Themes were based on the different styles of street art
 * Created an integrated database that allows the user to hav access to the posts in both the android and web-app
+* Created and used an API to help with the flow of information between the web-app and the android app
 * Created a login page that allows the user to create an account and create or alter their own posts
 
 
