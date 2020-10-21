@@ -1,0 +1,53 @@
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+   // your code here
+  const div = document.createElement('div');
+
+  div.className = 'user-profile';
+
+  div.innerHTML = `
+  <img class="rounded-circle article-img account-img" src="{{ url_for('static', filename='profile_pics/' + user.image_file) }}">
+      <h1 class="mb-3"> {{ user.username }} </h1>
+  `;
+
+  document.getElementById('user-profile').appendChild(div);
+}, false);
+</script>
+{% extends "base.html" %}
+{% block content %}
+<h2>Subscribed Categories</h2>
+<ul class="list-group category-list">
+  {% for i in subscription %}
+  <li class="list-group-item list-group-item-light category"><a href="{{ url_for('posts.category_posts', category=i.category) }}">{{i.category}}</a></li>
+  {% endfor %}
+</ul>
+    <h2>Latest Posts </h2>
+    {% if posts.items != undefined %}
+        {% for post in posts.items %}    
+            <article class="media content-section">
+              <img class=" article-img" src="{{ url_for('static', filename='art/' + post.art) }}">
+              <div class="media-body">
+                <div class="article-metadata">
+                  <a class="mr-2" href="{{ url_for('users.user_posts', username=post.author.username) }}">{{ post.author.username }}</a>
+                  <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
+                </div>
+                <h2><a class="article-title" href="{{ url_for('posts.post', post_id=post.id) }}">{{ post.title }}</a></h2>
+                <p class="article-content">{{ post.content }}</p>
+              </div>
+            </article>
+        {% endfor %}
+    {% else %}
+        <h3>There is currently no post for this user.</h3>
+    {% endif %}
+    {% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+      {% if page_num %}
+        {% if posts.page == page_num %}
+          <a class="btn btn-info mb-4" href="{{ url_for('users.user_posts', username=user.username, page=page_num) }}">{{ page_num }}</a>
+        {% else %}
+          <a class="btn btn-outline-info mb-4" href="{{ url_for('users.user_posts', username=user.username, page=page_num) }}">{{ page_num }}</a>
+        {% endif %}
+      {% else %}
+        ...
+      {% endif %}
+    {% endfor %}
+{% endblock content %}
