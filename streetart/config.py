@@ -8,5 +8,5 @@ class Config:
     MAIL_PORT = 587
     MAIL_USE_TLS = True
     MAIL_USERNAME = 'streetartapad@gmail.com'
-    MAIL_PASSWORD = 'Apad-team2_Project'
+    MAIL_PASSWORD = 'use own password'
 #    SERVER_NAME = '127.0.0.1:5000'
