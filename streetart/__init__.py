@@ -17,7 +17,7 @@ mail = Mail()
 
 def create_app(config_class=Config):
     app = Flask(__name__)
-    GoogleMaps(app, key="AIzaSyAoENm-w9e3f4uKPfnJQSiPQpBu7FXjDT4")
+    GoogleMaps(app, key={API KEY})
     app.config.from_object(Config)
     db.init_app(app)
     bcrypt.init_app(app)
