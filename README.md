@@ -1,7 +1,7 @@
 # web-app_street-art
 
-Create a web-based app with a database connection to an android app
-Created this project in a group with 4 people including myself
+* Create a web-based app with a database connection to an android app
+* Created this project in a group with 4 people including myself
 
 ## Project overview:
 
